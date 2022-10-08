@@ -1,6 +1,9 @@
-import  numpy as np
 import torch
 import sys
+import sys
+
+import torch
+
 
 def average(list):
     s = 0
@@ -17,12 +20,12 @@ def sum(list):
 
 
 def analysis(x, y):
-    '''
+    """
     对输入的两个四维张量[B,1,H,W]进行逐图的DSC、PPV、Sensitivity计算
     其中x表示网络输出的预测值
     y表示实际的预想结果mask
     返回为一个batch中DSC、PPV、Sen的平均值及batch大小
-    '''
+    """
     x = x.type(dtype=torch.uint8)
     y = y.type(dtype=torch.uint8)  # 保证类型为uint8
     DSC = []

@@ -2,12 +2,6 @@ import torch
 import torch.nn as nn
 import torchvision.models as models
 
-# 6.9定稿版本
-# 参考：
-# arxiv 1505.04597
-# arxiv 1801.05746，官方实现：https://github.com/ternaus/TernausNet
-# https://blog.csdn.net/github_36923418/article/details/83273107
-# pixelshuffle参考: arxiv 1609.05158
 
 backbone = 'resnet50'
 
@@ -77,7 +71,7 @@ class Resnet_Unet(nn.Module):
         elif backbone == 'resnet50':
             resnet = models.resnet50(pretrained=resnet_pretrain)
             filters = [64, 256, 512, 1024, 2048]
-        self.firstconv = nn.Conv2d(in_channels=1, out_channels=64, kernel_size=7, stride=2, padding=3, bias=False)
+        self.firstconv = nn.Conv2d(in_channels=3, out_channels=64, kernel_size=7, stride=2, padding=3, bias=False)
         self.firstbn = resnet.bn1
         self.firstrelu = resnet.relu
         self.firstmaxpool = resnet.maxpool
